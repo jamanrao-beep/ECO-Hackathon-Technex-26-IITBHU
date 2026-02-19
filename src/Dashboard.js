@@ -9,6 +9,7 @@ import UrbanHeatDistribution from './UrbanHeatDistribution';
 import { motion } from 'framer-motion';
 import backgroundImage from './bckgrnd.jpg';
 import './DashboardMetrics.css';
+import AboutUs from './AboutUs';
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('Overview');
@@ -328,6 +329,13 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                )}
+
+                {/* --- VIEW 5: ABOUT US --- */}
+                {activeTab === 'About Us' && (
+                    <div style={{ width: "100%", height: "100%", overflowY: "auto" }}>
+                        <AboutUs backgroundImage={backgroundImage} />
                     </div>
                 )}
 

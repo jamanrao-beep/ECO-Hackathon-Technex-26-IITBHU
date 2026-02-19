@@ -1,0 +1,346 @@
+/* src/AboutUs.css */
+
+.about-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+/* 1. HERO SECTION */
+.about-hero {
+    padding: 120px 40px 60px 40px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0;
+    background: linear-gradient(135deg, #ffffff, #00d2ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.about-subtitle {
+    color: #00d2ff;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.about-desc {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.stats-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.stat-badge {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    padding: 12px 25px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #e2e8f0;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+}
+
+/* 2. CONTENT SECTION (DARK BLUE BACKGROUND) */
+.about-content-section {
+    background-color: #0f172a;
+    padding: 80px 40px;
+    min-height: 50vh;
+}
+
+.team-section-title {
+    text-align: center;
+    font-size: 4rem; /* Massively increased size */
+    font-weight: 900;
+    margin-bottom: 70px;
+    background: linear-gradient(135deg, #ffffff, #00d2ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 0 10px 30px rgba(0, 210, 255, 0.3); /* Adds a premium neon glow */
+}
+
+/* PROFILE LAYOUTS (ALTERNATING) */
+.team-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px; /* Spacing between each team member */
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* --- UPDATED PROFILE CARDS (ENGAGING HOVER EFFECTS) --- */
+.profile-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(0, 210, 255, 0.15);
+    border-radius: 20px;
+    padding: 50px;
+    gap: 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glass Reflection Sweep Animation */
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: -150%; 
+    width: 50%; 
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transform: skewX(-25deg);
+    transition: 0.7s;
+}
+
+.profile-card:hover::before {
+    left: 150%;
+}
+
+.profile-card:hover {
+    transform: translateY(-10px);
+    border-color: #00d2ff;
+    box-shadow: 0 15px 40px rgba(0, 210, 255, 0.25);
+}
+
+/* ... keep the .profile-card.reverse and other existing profile info classes here ... */
+
+/* --- NEW INSTAGRAM LINK STYLES --- */
+.social-links {
+    margin-top: 25px;
+    display: flex;
+}
+
+/* Aligns the button to the right for the reversed cards (Neha & Krishna) */
+.profile-card.reverse .social-links {
+    justify-content: flex-end; 
+}
+
+.insta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+/* Beautiful Instagram Gradient on Hover */
+.insta-link:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 5px 20px rgba(220, 39, 67, 0.4);
+    transform: translateY(-3px);
+}
+
+/* THIS IS THE MAGIC CLASS THAT FLIPS THE LAYOUT */
+.profile-card.reverse {
+    flex-direction: row-reverse;
+}
+
+.profile-info {
+    flex: 1;
+    text-align: left;
+}
+
+/* If the card is reversed, align text to the right for symmetry */
+.profile-card.reverse .profile-info {
+    text-align: right;
+}
+
+.profile-name {
+    font-size: 2.2rem;
+    color: white;
+    margin-bottom: 5px;
+    font-weight: 900;
+}
+
+.profile-role {
+    color: #00d2ff;
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.profile-desc {
+    color: #cbd5e1;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* Photo Placeholder Box */
+.profile-photo-container {
+    width: 220px;
+    height: 280px;
+    background: rgba(0, 210, 255, 0.05);
+    border: 2px dashed rgba(0, 210, 255, 0.4);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #00d2ff;
+    font-weight: 600;
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.profile-photo-container:hover {
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+}
+
+.profile-photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- 3. HACKATHON SHOWCASE SECTION --- */
+.hackathon-showcase {
+    margin-top: 100px;
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(0, 210, 255, 0.05));
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    border-radius: 24px;
+    padding: 60px 40px;
+    text-align: center;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Adds a subtle glowing orb effect in the background of the box */
+.hackathon-showcase::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0, 210, 255, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.showcase-title {
+    font-size: 2.2rem;
+    color: white;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+
+.showcase-title span {
+    color: #00d2ff;
+}
+
+.showcase-desc {
+    color: #cbd5e1;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+}
+
+.showcase-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(46, 204, 113, 0.1);
+    border: 1px solid rgba(46, 204, 113, 0.4);
+    color: #2ecc71;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.15);
+}
+
+.showcase-tech-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 40px;
+}
+
+.tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.tech-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+}
+
+.tech-item:hover .tech-icon {
+    border-color: #00d2ff;
+    color: #00d2ff;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .hackathon-showcase {
+        padding: 40px 20px;
+        margin-top: 60px;
+    }
+    .showcase-title {
+        font-size: 1.8rem;
+    }
+}
