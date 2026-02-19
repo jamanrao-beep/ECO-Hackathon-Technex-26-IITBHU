@@ -117,12 +117,9 @@
 
 /* src/Navbar.css */
 
-/* ... existing code ... */
-
-/* --- ULTRA COMPACT SEARCH BAR --- */
 .search-container {
   position: relative;
-  margin-left: 15px;
+  margin-left: 15px; /* Reduced margin slightly to save space */
 }
 
 .search-input {
@@ -130,39 +127,38 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   
-  /* Even slimmer padding */
-  padding: 5px 10px 5px 30px; 
+  /* KEEPING HEIGHT & TEXT SIZE SAME */
+  padding: 8px 15px 8px 35px; 
+  font-size: 0.95rem; 
+  
+  /* REDUCED WIDTH ONLY */
+  width: 140px; /* Reduced from 200px/160px to fit better */
   
   color: white;
   outline: none;
   transition: all 0.3s ease;
-  
-  /* Much smaller default width */
-  width: 110px; 
-  font-size: 0.8rem; /* Smaller text */
 }
 
 .search-input::placeholder {
   color: rgba(255, 255, 255, 0.5);
-  font-size: 0.75rem;
 }
 
 .search-input:focus {
   background: rgba(255, 255, 255, 0.2);
   border-color: #00d2ff;
   
-  /* Expands just enough to type comfortable */
-  width: 160px; 
+  /* Expands to a comfortable size when typing */
+  width: 200px; 
   
   box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
 }
 
 .search-icon {
   position: absolute;
-  left: 10px;
+  left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 0.7rem; /* Tiny icon */
+  font-size: 0.9rem; /* Kept original icon size */
   pointer-events: none;
   opacity: 0.7;
 }

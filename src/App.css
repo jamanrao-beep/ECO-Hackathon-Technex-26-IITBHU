@@ -1,20 +1,18 @@
 /* src/App.css */
 /* src/App.css */
+/* src/App.css */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
   height: 100vh;
   
-  /* CHANGED: Allow vertical scrolling */
-  overflow-y: auto; 
-  overflow-x: hidden; /* Keep horizontal scroll locked */
+  /* CHANGED: Hide the body scrollbar */
+  overflow: hidden; 
 
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   background-size: 200% 200%;
   animation: cosmicFlow 15s ease infinite;
-
-  /* Remove flex centering so the dashboard can grow */
   display: block; 
   color: white;
 }
