@@ -85,6 +85,87 @@
 }
 
 /* PROFILE LAYOUTS (ALTERNATING) */
+
+/* --- EXCLUSIVE TEAM LEADER CARD EFFECTS (BLUE/PURPLE THEME) --- */
+.leader-card {
+    position: relative;
+    border: none; 
+    /* Soft purple-blue glow behind the card */
+    box-shadow: 0 15px 40px rgba(116, 0, 184, 0.15); 
+    transform: scale(1.02); 
+    z-index: 10;
+}
+
+/* The Animated Glowing Gradient Border */
+.leader-card::after {
+    content: "";
+    position: absolute;
+    inset: -2px; /* Thinned out slightly for a sharper, premium look */
+    border-radius: 22px;
+    /* Sleek gradient using only Cyan, Royal Blue, and Deep Purple */
+    background: linear-gradient(60deg, #00d2ff, #5e60ce, #7400b8, #3a86ff);
+    background-size: 300% 300%;
+    z-index: -1;
+    /* Slowed down the animation from 4s to 6s to make it feel more deliberate and calm */
+    animation: animated-gradient 6s ease infinite; 
+}
+
+@keyframes animated-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating Leader Badge - Centered above the photo */
+.leader-badge {
+    position: absolute;
+    top: -25px; /* Floats exactly in the padding space above the photo */
+    left: 50%; /* Pushes to the middle */
+    /* background gradient matching your dark purple/blue theme */
+    background: linear-gradient(90deg, #7400b8, #00d2ff);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 5px 15px rgba(116, 0, 184, 0.3);
+    white-space: nowrap; /* Ensures the text stays on one line */
+    z-index: 20;
+    /* Uses a new animation to keep it horizontally centered while bouncing */
+    animation: float-badge-center 3s ease-in-out infinite;
+}
+
+/* New keyframe that maintains the 50% centering while floating up and down */
+@keyframes float-badge-center {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -6px); }
+}
+
+@media (max-width: 768px) {
+    .leader-badge {
+        top: -15px;
+        font-size: 0.75rem;
+        padding: 6px 15px;
+    }
+}
+
+/* --- EXCLUSIVE VIP SIZING FOR LEADER PHOTO --- */
+.leader-card .profile-photo-container {
+    width: 280px;  /* Increased from the standard 280px */
+    height: 340px; /* Increased from the standard 280px */
+    border-width: 3px; /* Slightly thicker border to match the larger size */
+}
+
+/* Ensure the larger photo still looks great on mobile screens */
+@media (max-width: 768px) {
+    .leader-card .profile-photo-container {
+        width: 280px; /* Keeps it larger than the normal 240px mobile size */
+        height: 280px;
+    }
+}
+
 .team-cards-container {
     display: flex;
     flex-direction: column;
@@ -343,4 +424,162 @@
     .showcase-title {
         font-size: 1.8rem;
     }
+}
+
+/* --- EXCLUSIVE VIP SIZING FOR LEADER PHOTO (PORTRAIT) --- */
+.leader-card .profile-photo-container {
+    width: 280px; 
+    height: 340px; 
+    border-width: 3px; 
+    position: relative; /* Crucial for the new holographic effects to stay inside the photo */
+}
+
+/* 1. Holographic Photo Scanner */
+.leader-card .profile-photo-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(to right, transparent, rgba(0, 210, 255, 0.9), transparent);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.8);
+    animation: leader-photo-scan 3s linear infinite;
+    z-index: 10;
+    pointer-events: none; /* Prevents the laser from blocking image clicks/hovers */
+}
+
+@keyframes leader-photo-scan {
+    0% { top: -10%; opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
+}
+
+/* 2. Digital Grid Overlay on Photo */
+.leader-card .profile-photo-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 210, 255, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 210, 255, 0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0.3;
+    transition: opacity 0.4s ease;
+}
+
+/* Grid intensifies when hovering over your card */
+.leader-card:hover .profile-photo-container::before {
+    opacity: 0.8; 
+}
+
+/* 3. Live System Architect Pulse Dot */
+.live-status-dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #00d2ff;
+    border-radius: 50%;
+    margin-left: 18px;
+    box-shadow: 0 0 10px #00d2ff;
+    animation: pulse-neon-dot 2s infinite;
+    vertical-align: middle;
+    margin-bottom: 6px;
+}
+
+@keyframes pulse-neon-dot {
+    0% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.6); }
+    70% { box-shadow: 0 0 0 12px rgba(0, 210, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0); }
+}
+
+/* Ensure mobile responsiveness */
+@media (max-width: 768px) {
+    .leader-card .profile-photo-container {
+        width: 260px;
+        height: 300px;
+    }
+}
+
+/* --- ULTIMATE VIP EFFECTS --- */
+
+/* 1. HUD Targeting Reticles (Snaps to photo on hover) */
+.vip-photo-wrapper::before, 
+.vip-photo-wrapper::after {
+    content: ''; 
+    position: absolute; 
+    width: 40px; 
+    height: 40px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 25;
+    pointer-events: none;
+    opacity: 0; /* Hidden until hover */
+}
+
+/* Top-Left and Bottom-Right Brackets */
+.vip-photo-wrapper::before {
+    top: -20px; left: -20px; 
+    border-top: 3px solid #00d2ff; 
+    border-left: 3px solid #00d2ff;
+}
+.vip-photo-wrapper::after {
+    bottom: -20px; right: -20px; 
+    border-bottom: 3px solid #00d2ff; 
+    border-right: 3px solid #00d2ff;
+}
+
+/* On card hover: Brackets appear, glow, and snap tightly to the photo's edges */
+.leader-card:hover .vip-photo-wrapper::before {
+    top: -5px; left: -5px; 
+    opacity: 1;
+    box-shadow: -5px -5px 15px rgba(0, 210, 255, 0.4);
+}
+.leader-card:hover .vip-photo-wrapper::after {
+    bottom: -5px; right: -5px; 
+    opacity: 1;
+    box-shadow: 5px 5px 15px rgba(0, 210, 255, 0.4);
+}
+
+/* 2. Holographic "SYS-ADMIN" Watermark */
+.leader-card .profile-info {
+    position: relative; /* Anchor for the watermark */
+    z-index: 2;
+}
+
+.leader-card .profile-info::before {
+    content: 'SYS-ADMIN';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    font-size: 6rem;
+    font-weight: 900;
+    color: rgba(0, 210, 255, 0.03); /* Extremely faint */
+    white-space: nowrap;
+    z-index: -1;
+    pointer-events: none;
+    transition: color 0.4s ease;
+}
+
+/* Watermark glows slightly brighter on hover */
+.leader-card:hover .profile-info::before {
+    color: rgba(0, 210, 255, 0.08); 
+}
+/* 3. Holographic Data Glow on "Team Leader" (Replaces the red glitch) */
+.glitch-text {
+    display: inline-block;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* On hover, it turns cyan, expands slightly, and casts a purple/blue glow */
+.leader-card:hover .glitch-text {
+    color: #ff6f00 !important; 
+    text-shadow: 0 0 10px rgb(255, 208, 0), 0 0 25px rgba(116, 0, 184, 0.6);
+    letter-spacing: 1.5px;
+    transform: scale(1.05) translateX(5px);
+}
+
+@keyframes text-flicker {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-1px, 1px); }
 }

@@ -40,6 +40,36 @@ const Dashboard = () => {
         message: "High urban heat retention detected. Hydration mandatory."
     });
 
+
+
+    // --- PASTE THIS NEW LOCATION DETECTOR HERE ---
+    const [userLocation, setUserLocation] = useState("Detecting location...");
+
+    useEffect(() => {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                try {
+                    const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
+                    const data = await response.json();
+                    const city = data.address.city || data.address.town || data.address.village || data.address.county || "Unknown City";
+                    const state = data.address.state || "";
+                    setUserLocation(`${city}, ${state}`);
+                } catch (error) {
+                    setUserLocation("Dayalpur Daulatpur, Bihar"); // Fallback
+                }
+            }, (error) => {
+                setUserLocation("Dayalpur Daulatpur, Bihar"); // Fallback
+            });
+        } else {
+            setUserLocation("Dayalpur Daulatpur, Bihar"); // Fallback
+        }
+    }, []);
+    // ---------------------------------------------
+
+    // AUTO PLAY LOGIC
+
     // AUTO PLAY LOGIC
     useEffect(() => {
         let interval;
@@ -51,6 +81,7 @@ const Dashboard = () => {
         return () => clearInterval(interval);
     }, [isPlaying]);
 
+
     const getStatus = (aqi) => {
         if (aqi <= 50) return "Good";
         if (aqi <= 100) return "Moderate";
@@ -58,6 +89,7 @@ const Dashboard = () => {
         if (aqi <= 200) return "Unhealthy";
         return "Hazardous";
     };
+
 
     useEffect(() => {
         const fetchOverview = async () => {
@@ -150,7 +182,8 @@ const Dashboard = () => {
 
     return (
         <motion.div className="no-scrollbar" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} style={{ width: "100%", height: "100vh", overflowY: "scroll", overflowX: "hidden", position: "relative" }}>
-            <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
+            {/* Added userLocation prop here! */}
+            <Navbar activeTab={activeTab} setActiveTab={setActiveTab} userLocation={userLocation} />
 
             <div style={{ position: "relative", zIndex: 1, width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
 

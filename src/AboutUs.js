@@ -48,14 +48,17 @@ const AboutUs = ({ backgroundImage }) => {
                     {/* The 4 Alternating Team Cards */}
                     <div className="team-cards-container">
 
-                        {/* 1. Aman */}
-                        <div className="profile-card">
+                        {/* 1. Aman (ULTIMATE VIP CARD) */}
+                        <div className="profile-card leader-card">
                             <div className="profile-info">
-                                <div className="profile-name">Joginapally Aman Rao</div>
+                                <div className="profile-name">
+                                    Joginapally Aman Rao
+                                    <span className="live-status-dot" title="Architect Online"></span>
+                                </div>
 
-                                {/* UPDATED ROLE: Two lines, Team Leader highlighted in white */}
                                 <div className="profile-role" style={{ lineHeight: '1.4' }}>
-                                    <span style={{ color: '#3a86ff', fontSize: '1.25rem' }}>Team Leader</span><br />
+                                    {/* NEW: Added glitch-text class here */}
+                                    <span className="glitch-text" style={{ color: '#fcbe04', fontSize: '1.25rem' }}>Team Leader</span><br />
                                     Full-Stack & ML Engineer
                                 </div>
 
@@ -63,15 +66,19 @@ const AboutUs = ({ backgroundImage }) => {
                                     Spearheads the overall project vision and machine learning architecture. Aman single-handedly developed the complete interactive React application, seamlessly integrating complex GIS mapping with the ML predictive models to create a highly immersive, real-time environmental command center.
                                 </div>
 
-                                {/* NEW INSTA LINK */}
                                 <div className="social-links">
                                     <a href="https://www.instagram.com/amanj_2029/" target="_blank" rel="noreferrer" className="insta-link">
                                         @amanj_2029
                                     </a>
                                 </div>
                             </div>
-                            <div className="profile-photo-container">
-                                <span style={{ textAlign: 'center', lineHeight: '1.4' }}>📸<br />Aman's<br />Photo</span>
+
+                            {/* NEW: Added className="vip-photo-wrapper" to this div */}
+                            <div className="vip-photo-wrapper" style={{ position: 'relative', display: 'inline-block', flexShrink: 0 }}>
+                                <div className="leader-badge">✦ Project Lead</div>
+                                <div className="profile-photo-container">
+
+                                </div>
                             </div>
                         </div>
 
@@ -86,7 +93,7 @@ const AboutUs = ({ backgroundImage }) => {
 
                                 <div className="social-links">
                                     <a href="https://www.instagram.com/neha_perumalla/" target="_blank" rel="noreferrer" className="insta-link">
-                                        @neha_perumalla
+                                        @nehaperumalla_insta
                                     </a>
                                 </div>
                             </div>

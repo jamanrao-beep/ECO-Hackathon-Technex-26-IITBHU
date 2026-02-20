@@ -3,7 +3,7 @@ import React from 'react';
 import './Navbar.css';
 import { motion } from 'framer-motion';
 
-const Navbar = ({ activeTab, setActiveTab }) => {
+const Navbar = ({ activeTab, setActiveTab, userLocation }) => {
 
     const navLinks = [
         'Overview',
@@ -52,7 +52,7 @@ const Navbar = ({ activeTab, setActiveTab }) => {
             <div className="search-container">
                 <input
                     type="text"
-                    placeholder="Search location..."
+                    placeholder={userLocation}
                     className="search-input"
                 />
                 <span className="search-icon">🔍</span>
