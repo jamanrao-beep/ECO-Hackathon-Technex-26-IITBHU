@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './AboutUs.css';
-import amanPhoto from './final.png';
+import amanPhoto from './2501EE41.jpeg';
 import nehaPhoto from './neha.jpeg';
 import mahaPhoto from './mahalakshmi.png';
 import krishnaPhoto from './KTA.jpg'; // Placeholder for Krishna's photo
