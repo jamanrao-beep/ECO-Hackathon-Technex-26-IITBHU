@@ -2,6 +2,7 @@
 import React from 'react';
 import './Navbar.css';
 import { motion } from 'framer-motion';
+import projectLogo from './logotrial.jpg';
 
 const Navbar = ({ activeTab, setActiveTab, userLocation }) => {
 
@@ -17,7 +18,14 @@ const Navbar = ({ activeTab, setActiveTab, userLocation }) => {
         <nav className="navbar">
             {/* Brand Section */}
             <div className="brand-container">
-                <div className="logo-placeholder"></div>
+
+                <img
+                    src={projectLogo}
+                    alt="Pro Atmos Guard Logo"
+                    className="brand-logo-img"
+                    /* Increased height to 50px and added a bit more margin */
+                    style={{ height: '50px', marginRight: '15px', filter: 'drop-shadow(0 0 5px #00d2ff)' }}
+                />
                 <div className="title-stack">
                     <span className="main-title">PRO ATMOS GUARD</span>
                     {/* Updated Subtitle with the Blue Dot */}
