@@ -40,8 +40,8 @@ Current environmental monitoring relies on massive, city-wide averages that mask
 ## 👨‍💻 Meet the IIT Patna Team
 
 - **Joginapally Aman Rao** ✦ _Team Leader, Full-Stack & ML Engineer_
-- **Perumalla Neha** — _Machine Learning Engineer_
-- **Mahalakshmi Pattamsetti** — _Hardware Simulations & Backend Dev_
+- **Perumalla Neha** — _Design & Machine Learning Engineer_
+- **Mahalakshmi Pattamsetti** — _Hardware Simulations & IoT Engineer_
 - **Krishna Teja Degala** — _IoT & Hardware Specialist_
 
 ---
