@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './AboutUs.css';
-// import amanPhoto from './Aman.jpg';
+import amanPhoto from './final.png';
 import nehaPhoto from './neha.jpeg';
 import mahaPhoto from './mahalakshmi.png';
 import krishnaPhoto from './KTA.jpg'; // Placeholder for Krishna's photo
@@ -76,8 +76,9 @@ const AboutUs = ({ backgroundImage }) => {
                             {/* NEW: Added className="vip-photo-wrapper" to this div */}
                             <div className="vip-photo-wrapper" style={{ position: 'relative', display: 'inline-block', flexShrink: 0 }}>
                                 <div className="leader-badge">✦ Project Lead</div>
-                                <div className="profile-photo-container">
 
+                                <div className="profile-photo-container">
+                                    <img src={amanPhoto} alt="Joginapally Aman Rao" className="profile-photo leader-photo" />
                                 </div>
                             </div>
                         </div>
