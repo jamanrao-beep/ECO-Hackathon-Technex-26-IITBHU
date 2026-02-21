@@ -1311,3 +1311,178 @@
 .scroll-down-arrow:hover {
     color: #ffffff;
 }
+
+/* --- MOBILE ONLY DASHBOARD OVERRIDES (Max Width 768px) --- */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Stack the Main and Bottom Rows */
+    .main-row, .bottom-row {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+        padding: 0 10px;
+    }
+
+    .glass-box {
+        width: 100% !important;
+        max-width: 320px !important;
+        margin: 0 auto;
+    }
+
+    /* 2. Fix the 24-Hour Forecast Grid (Horizontal Scroll) */
+    .forecast-grid {
+        display: flex !important;
+        flex-wrap: nowrap !important; /* Prevents them from stacking vertically */
+        overflow-x: auto !important;  /* Enables horizontal swiping */
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 15px;
+        justify-content: flex-start !important;
+        gap: 15px;
+    }
+
+    /* Adds a custom neon scrollbar for the forecast grid on mobile */
+    .forecast-grid::-webkit-scrollbar {
+        height: 6px;
+    }
+    .forecast-grid::-webkit-scrollbar-thumb {
+        background: rgba(0, 210, 255, 0.5);
+        border-radius: 10px;
+    }
+
+    /* 3. Stack the ML Insights & Suggestion Boxes */
+    .ml-insights-container, .suggestion-container, .routing-inputs-bar {
+        flex-direction: column !important;
+        padding: 0 10px;
+        gap: 20px;
+        width: 100%;
+    }
+
+    /* Fix the Health Box border shifting */
+    .health-box {
+        border-left: none !important;
+        border-top: 4px solid #00d2ff;
+        padding-top: 20px;
+        width: 100%;
+    }
+
+    /* 4. Fix Routing Inputs so they don't crush */
+    .route-input {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .calc-route-btn {
+        width: 100% !important;
+    }
+
+    /* 5. Stack the Eco Impact & System Architecture Grids */
+    .plan-grid {
+        grid-template-columns: 1fr !important; /* Forces 1 column */
+        padding: 0 15px;
+        gap: 20px;
+    }
+}
+
+/* =========================================================
+   MOBILE ONLY DASHBOARD FIXES (Max Width 768px)
+   ========================================================= */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Force EVERYTHING to column & center it */
+    .main-row, .bottom-row, .suggestion-container, .ml-insights-container, 
+    .map-split-container, .plan-grid, .regional-metrics-row, .routing-inputs-bar {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+        width: 100% !important;
+        padding: 0 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    .metrics-section {
+        padding-top: 90px !important;
+    }
+
+    /* 2. Cap maximum widths to 280px so they NEVER cut off on a 320px screen */
+    .glass-box, .small-box, .tourist-box, .health-box, .ml-card, .plan-card, .eco-card, .station-panel {
+        width: 100% !important;
+        max-width: 280px !important; 
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Fix the Big AQI Circle */
+    .aqi-circle {
+        width: 220px !important;
+        height: 220px !important;
+        margin: 20px auto !important;
+    }
+    .aqi-value { font-size: 4rem !important; }
+
+    /* 3. Regional Card 320px fixes */
+    .regional-card {
+        width: 95% !important;
+        padding: 20px 10px !important;
+    }
+    .metric-divider {
+        width: 80% !important;
+        height: 1px !important; /* Turns vertical line into horizontal line when stacked */
+        margin: 10px 0 !important;
+    }
+
+    /* 4. Map Container Fixes */
+    .map-split-container {
+        height: auto !important; /* Allows map to stack above station panel */
+    }
+    .map-wrapper {
+        height: 350px !important;
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+
+    /* 5. Routing Inputs */
+    .route-input, .calc-route-btn {
+        width: 100% !important;
+        max-width: 280px !important;
+    }
+
+    /* 6. Fix the Forecast Grid - Enables horizontal swipe instead of crushing */
+    .forecast-wrapper {
+        width: 95% !important;
+        padding-left: 10px !important;
+    }
+    .forecast-grid {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 15px !important;
+        gap: 15px !important;
+        justify-content: flex-start !important;
+    }
+    .forecast-card {
+        min-width: 75px !important; /* Prevents text from squishing inside the scroll */
+    }
+
+    /* 7. Eco Impact 320px Fixes */
+    .eco-hero-title { font-size: 2rem !important; }
+    .eco-hero-subtitle { font-size: 1rem !important; }
+    .eco-quote { font-size: 1.5rem !important; }
+    .dev-highlight-box { 
+        padding: 20px 15px !important; 
+        max-width: 280px !important; 
+    }
+
+    /* 8. Predictive Slider Controls */
+    .predictive-controls-bar {
+        padding: 15px !important;
+    }
+    .legend-box {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+    .slider-group {
+        width: 100% !important;
+        flex-direction: column !important;
+    }
+}

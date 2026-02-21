@@ -292,3 +292,185 @@
     /* Gives the dot a slight neon glow */
     box-shadow: 0 0 6px #00d2ff; 
 }
+
+/* --- STRICT DESKTOP PROTECTION --- */
+.hamburger {
+    display: none; /* Invisible on laptops/desktops */
+}
+
+/* --- MOBILE ONLY OVERRIDES (Max Width 768px) --- */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+        color: #00d2ff;
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: 100;
+        margin-left: auto; 
+        margin-right: 20px;
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+
+    /* Slides the links off the screen to the right */
+    .navbar-links {
+        position: fixed;
+        top: 0;
+        right: -100%; 
+        width: 250px;
+        height: 100vh;
+        background: rgba(11, 17, 33, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 99;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Triggers the slide-in menu */
+    .navbar-links.mobile-active {
+        right: 0; 
+    }
+}
+
+/* --- 1. DESKTOP FIX: MAKES LINKS SIDE-BY-SIDE --- */
+.nav-links {
+    display: flex;             /* This forces them into a horizontal row */
+    flex-direction: row;
+    list-style: none;          /* Removes bullet points */
+    gap: 25px;                 /* Spacing between each link */
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure the navbar itself spreads out items horizontally */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Hide hamburger on desktop */
+.hamburger {
+    display: none;
+}
+
+
+/* --- 2. MOBILE & TABLET PORTRAIT OVERRIDES (Max Width: 950px) --- */
+@media screen and (max-width: 950px) {
+    
+    /* Show the hamburger menu icon */
+    .hamburger {
+        display: block;
+        color: #00d2ff;
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: 101;
+        margin-left: auto; /* Pushes it to the right */
+        padding-right: 20px;
+    }
+
+    /* Convert the horizontal list into a sliding side-panel */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Hides off screen by default */
+        width: 280px;
+        height: 100vh;
+        background: rgba(11, 17, 33, 0.98); /* Dark glass effect */
+        backdrop-filter: blur(20px);
+        flex-direction: column; /* Stacks them vertically ONLY on mobile */
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 100;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+    }
+
+    /* When hamburger is clicked, this class pulls the menu onto the screen */
+    .nav-links.mobile-active {
+        right: 0;
+    }
+
+    /* Hide the search bar on small screens to prevent overlap, 
+       or you can adjust it to sit below the logo */
+    .search-container {
+        display: none; 
+    }
+}
+
+/* =========================================================
+   MOBILE ONLY OVERRIDES (Max Width 768px - Shields Desktop)
+   ========================================================= */
+.hamburger {
+    display: none; /* Keeps it strictly hidden on desktop */
+}
+
+@media screen and (max-width: 768px) {
+    /* 1. Fix the massive 320px overflow caused by padding/margins */
+    .navbar {
+        padding: 10px 15px !important;
+    }
+    
+    .brand-container {
+        min-width: 0 !important; /* Kills the 280px desktop min-width */
+        margin-right: 10px !important;
+    }
+    
+    /* 2. Shrink logo and text slightly to fit 320px screens perfectly */
+    .brand-logo-img {
+        height: 35px !important;
+        margin-right: 8px !important;
+    }
+    .main-title {
+        font-size: 0.95rem !important;
+    }
+    .sub-title {
+        font-size: 0.6rem !important;
+    }
+
+    /* 3. Show and position Hamburger */
+    .hamburger {
+        display: block !important;
+        color: #00d2ff;
+        font-size: 1.8rem;
+        cursor: pointer;
+        z-index: 1001;
+        margin-left: auto;
+    }
+
+    /* 4. Convert Horizontal Links to Sliding Panel */
+    .nav-links {
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important; 
+        width: 250px !important;
+        height: 100vh !important;
+        background: rgba(11, 17, 33, 0.98) !important;
+        backdrop-filter: blur(20px) !important;
+        flex-direction: column !important; /* Stacks links */
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 35px !important;
+        transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        z-index: 1000 !important;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8) !important;
+        margin: 0 !important;
+    }
+
+    .nav-links.mobile-active {
+        right: 0 !important;
+    }
+
+    /* 5. Hide the search bar on phones to save layout space */
+    .search-container {
+        display: none !important;
+    }
+}

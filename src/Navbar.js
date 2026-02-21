@@ -1,10 +1,12 @@
 // src/Navbar.js
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
 import { motion } from 'framer-motion';
 import projectLogo from './logotrial.jpg';
 
 const Navbar = ({ activeTab, setActiveTab, userLocation }) => {
+    // State for mobile menu toggle
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navLinks = [
         'Overview',
@@ -18,17 +20,14 @@ const Navbar = ({ activeTab, setActiveTab, userLocation }) => {
         <nav className="navbar">
             {/* Brand Section */}
             <div className="brand-container">
-
                 <img
                     src={projectLogo}
                     alt="Pro Atmos Guard Logo"
                     className="brand-logo-img"
-                    /* Increased height to 50px and added a bit more margin */
                     style={{ height: '50px', marginRight: '15px', filter: 'drop-shadow(0 0 5px #00d2ff)' }}
                 />
                 <div className="title-stack">
                     <span className="main-title">PRO ATMOS GUARD</span>
-                    {/* Updated Subtitle with the Blue Dot */}
                     <div className="sub-title">
                         <span>IIT PATNA</span>
                         <span className="blue-dot"></span>
@@ -37,13 +36,21 @@ const Navbar = ({ activeTab, setActiveTab, userLocation }) => {
                 </div>
             </div>
 
+            {/* Hamburger Button (Only visible on Mobile) */}
+            <div className="hamburger" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                {isMobileMenuOpen ? '✖' : '☰'}
+            </div>
+
             {/* Navigation Links */}
-            <ul className="nav-links">
+            <ul className={`nav-links ${isMobileMenuOpen ? 'mobile-active' : ''}`}>
                 {navLinks.map((link) => (
                     <li
                         key={link}
                         className={`nav-item ${activeTab === link ? 'active' : ''}`}
-                        onClick={() => setActiveTab(link)}
+                        onClick={() => {
+                            setActiveTab(link);
+                            setIsMobileMenuOpen(false); // Auto-close on click
+                        }}
                     >
                         {link}
                         {activeTab === link && (
@@ -57,7 +64,7 @@ const Navbar = ({ activeTab, setActiveTab, userLocation }) => {
             </ul>
 
             {/* Search Bar */}
-            <div className="search-container">
+            <div className={`search-container ${isMobileMenuOpen ? 'mobile-hidden' : ''}`}>
                 <input
                     type="text"
                     placeholder={userLocation}
