@@ -67,8 +67,8 @@ const AboutUs = ({ backgroundImage }) => {
                                 </div>
 
                                 <div className="social-links">
-                                    <a href="https://www.instagram.com/amanj_2029/" target="_blank" rel="noreferrer" className="insta-link">
-                                        @amanj_2029
+                                    <a href="https://www.linkedin.com/in/amanraoj/" target="_blank" rel="noreferrer" className="linkedin-link">
+                                        <i className="fab fa-linkedin"></i> LinkedIn Profile
                                     </a>
                                 </div>
                             </div>
@@ -93,8 +93,8 @@ const AboutUs = ({ backgroundImage }) => {
                                 </div>
 
                                 <div className="social-links">
-                                    <a href="https://www.instagram.com/neha_perumalla/" target="_blank" rel="noreferrer" className="insta-link">
-                                        @nehaperumalla_insta
+                                    <a href="https://www.linkedin.com/in/neha-perumalla-19475b378/" target="_blank" rel="noreferrer" className="linkedin-link">
+                                        <i className="fab fa-linkedin"></i> LinkedIn Profile
                                     </a>
                                 </div>
                             </div>
@@ -113,8 +113,8 @@ const AboutUs = ({ backgroundImage }) => {
                                 </div>
 
                                 <div className="social-links">
-                                    <a href="https://www.instagram.com/pattamsetti__99/" target="_blank" rel="noreferrer" className="insta-link">
-                                        @mahalakshmi_insta
+                                    <a href="https://www.linkedin.com/in/mahalakshmi-pattamsetti-3321003b4/" target="_blank" rel="noreferrer" className="linkedin-link">
+                                        <i className="fab fa-linkedin"></i> LinkedIn Profile
                                     </a>
                                 </div>
                             </div>
@@ -133,8 +133,8 @@ const AboutUs = ({ backgroundImage }) => {
                                 </div>
 
                                 <div className="social-links">
-                                    <a href="#" target="_blank" rel="noreferrer" className="insta-link">
-                                        @KrishnaTeja_insta
+                                    <a href="https://www.linkedin.com/in/krishnatejaiitp/" target="_blank" rel="noreferrer" className="linkedin-link">
+                                        <i className="fab fa-linkedin"></i> LinkedIn Profile
                                     </a>
                                 </div>
                             </div>
