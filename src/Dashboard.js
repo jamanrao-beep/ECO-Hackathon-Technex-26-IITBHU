@@ -29,7 +29,7 @@ const Dashboard = () => {
     const [routeData, setRouteData] = useState(null);
     const [isRouting, setIsRouting] = useState(false);
 
-    const [liveData, setLiveData] = useState({ temp: '--', humidity: '--', pm25: '--', aqi: '--', status: 'Loading...' });
+    const [liveData, setLiveData] = useState({ temp: '--', humidity: '--', pm25: '--', aqi: '--', pm10: '--', status: 'Loading...' });
 
     const [selectedLoc, setSelectedLoc] = useState({
         name: "IIT Patna", aqi: 45, status: "Good", message: "Perfect conditions.",

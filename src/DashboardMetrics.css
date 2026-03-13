@@ -1494,7 +1494,7 @@
   color: #f8fafc;
   padding: 14px 28px;
   border-radius: 12px;
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -1514,5 +1514,5 @@
 }
 
 .btn-icon {
-  font-size: 1.2rem;
+  font-size: 2rem;
 }
