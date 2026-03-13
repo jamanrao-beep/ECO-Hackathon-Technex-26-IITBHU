@@ -98,8 +98,8 @@ useEffect(() => {
 
         try {
 
-            const res = await fetch("http://10.118.195.129:3000/sensor");
-
+            const res = await fetch("http://localhost:3000/sensor");
+            
             const data = await res.json();
 
             setLiveData({
