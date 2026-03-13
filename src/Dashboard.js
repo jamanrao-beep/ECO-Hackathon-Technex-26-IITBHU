@@ -93,45 +93,48 @@ const Dashboard = () => {
 
 
     useEffect(() => {
-
-        const fetchSensorData = async () => {
-
+        const fetchOverview = async () => {
             try {
+                let lat = 25.5358, lon = 84.8512; // Default to IIT Patna
 
-                const res = await fetch("http://friendly-disco-69xvr4wjx6v5fjgw-3000.app.github.dev/sensor");
+                // Get Current User Location
+                if (navigator.geolocation) {
+                    try {
+                        const pos = await new Promise((res, rej) =>
+                            navigator.geolocation.getCurrentPosition(res, rej)
+                        );
+                        lat = pos.coords.latitude;
+                        lon = pos.coords.longitude;
+                        setUserPos([lat, lon]); // Update map position state
+                    } catch (e) {
+                        console.warn("Using default coordinates due to location access denial.");
+                    }
+                }
 
-                const data = await res.json();
+                // Fetch Weather Data (Temp & Humidity)
+                const wRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m`);
+                const wData = await wRes.json();
 
-                setLiveData({
-                    temp: data.temperature ?? "--",
-                    humidity: data.humidity ?? "--",
-                    pm25: data.mq5 ?? "--",   // placeholder for PM2.5 estimation
-                    aqi: data.aqi ?? "--",
-                    status: getStatus(data.aqi ?? 0)
-                });
+                // Fetch Air Quality Data (AQI, PM2.5, PM10)
+                const aRes = await fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=pm2_5,pm10,us_aqi`);
+                const aData = await aRes.json();
 
+                if (wData.current && aData.current) {
+                    setLiveData({
+                        temp: Math.round(wData.current.temperature_2m),
+                        humidity: Math.round(wData.current.relative_humidity_2m),
+                        pm25: aData.current.pm2_5,
+                        pm10: aData.current.pm10, // Added PM10 mapping
+                        aqi: aData.current.us_aqi,
+                        status: getStatus(aData.current.us_aqi) // Calculate status based on AQI
+                    });
+                }
             } catch (error) {
-
-                console.log("Sensor fetch failed");
-
-                setLiveData({
-                    temp: "--",
-                    humidity: "--",
-                    pm25: "--",
-                    aqi: "--",
-                    status: "Sensor Offline"
-                });
-
+                console.error("Failed to fetch environmental metrics:", error);
             }
-
         };
 
-        fetchSensorData();
-
-        const interval = setInterval(fetchSensorData, 3000);
-
-        return () => clearInterval(interval);
-
+        fetchOverview();
     }, []);
 
     const handleMapClick = async (lat, lng) => {
@@ -221,7 +224,6 @@ const Dashboard = () => {
                                         className="ai-portal-btn"
                                         onClick={() => window.open('https://friendly-disco-69xvr4wjx6v5fjgw-8501.app.github.dev/', '_blank')}
                                     >
-                                        <span className="btn-icon">🧠</span>
                                         Launch Pro Atmos AI
                                     </button>
                                 </div>
