@@ -98,7 +98,7 @@ const Dashboard = () => {
 
             try {
 
-                const res = await fetch("http://10.118.195.85:3000/sensor");
+                const res = await fetch("http://friendly-disco-69xvr4wjx6v5fjgw-3000.app.github.dev/sensor");
 
                 const data = await res.json();
 
@@ -128,7 +128,7 @@ const Dashboard = () => {
 
         fetchSensorData();
 
-        const interval = setInterval(fetchSensorData, 1000);
+        const interval = setInterval(fetchSensorData, 3000);
 
         return () => clearInterval(interval);
 
