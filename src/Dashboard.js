@@ -14,7 +14,7 @@ import Footer from './Footer';
 
 const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('Overview');
-
+    const [serialData, setSerialData] = useState({ aqi: '--', pm25: '--' });
     const [forecastOffset, setForecastOffset] = useState(0);
     const [showRoute, setShowRoute] = useState(false);
     const [predictiveHour, setPredictiveHour] = useState(0);
@@ -41,9 +41,37 @@ const Dashboard = () => {
         message: "High urban heat retention detected. Hydration mandatory."
     });
 
+    const connectSerial = async () => {
+        try {
+            const port = await navigator.serial.requestPort();
+            await port.open({ baudRate: 115200 }); // Must match Serial.begin(115200) in Arduino
 
+            const reader = port.readable.getReader();
+            const decoder = new TextDecoder();
 
-    // --- PASTE THIS NEW LOCATION DETECTOR HERE ---
+            while (true) {
+                const { value, done } = await reader.read();
+                if (done) break;
+
+                const rawText = decoder.decode(value);
+                // Assuming Arduino sends: "AQI:45,PM25:12"
+                if (rawText.includes("AQI:")) {
+                    const aqiVal = rawText.split("AQI:")[1].split(",")[0];
+                    const pmVal = rawText.split("PM25:")[1];
+
+                    setLiveData(prev => ({
+                        ...prev,
+                        aqi: parseInt(aqiVal),
+                        pm25: parseFloat(pmVal),
+                        status: getStatus(parseInt(aqiVal)) // Uses your existing getStatus function
+                    }));
+                }
+            }
+        } catch (err) {
+            console.error("Serial Connection Failed", err);
+        }
+    };
+
     const [userLocation, setUserLocation] = useState("Detecting location...");
 
     useEffect(() => {
@@ -196,7 +224,12 @@ const Dashboard = () => {
                                 <h2 className="metrics-title">Current Environmental Metrix</h2>
                                 <div className="main-row">
                                     <div className="glass-box side-box left"><span className="box-icon">🌡️</span><span className="box-value">{liveData.temp}°C</span><span className="box-label">Temperature</span></div>
-                                    <div className="aqi-circle"><span className="aqi-value">{liveData.aqi}</span><span className="aqi-label">AQI</span><span className="aqi-status">{liveData.status}</span></div>
+                                    <div className="aqi-circle"><span className="aqi-value">
+                                        <button onClick={connectSerial} className="calc-route-btn">
+                                            Connect Live Sensor
+                                        </button>
+                                        {liveData.aqi}
+                                    </span><span className="aqi-label">AQI</span><span className="aqi-status">{liveData.status}</span></div>
                                     <div className="glass-box side-box right"><span className="box-icon">💧</span><span className="box-value">{liveData.humidity}%</span><span className="box-label">Humidity</span></div>
                                 </div>
                                 <div className="bottom-row"><div className="glass-box small-box"><span className="box-label">PM 2.5</span><span className="box-value">{liveData.pm25}</span></div><div className="glass-box small-box"><span className="box-label">PM 10</span><span className="box-value">--</span></div></div>
