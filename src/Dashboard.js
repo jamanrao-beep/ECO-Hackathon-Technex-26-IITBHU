@@ -92,32 +92,47 @@ const Dashboard = () => {
     };
 
 
-    useEffect(() => {
-        const fetchOverview = async () => {
-            try {
-                let lat = 25.5358, lon = 84.8512;
-                if (navigator.geolocation) {
-                    try {
-                        const pos = await new Promise((res, rej) => navigator.geolocation.getCurrentPosition(res, rej));
-                        lat = pos.coords.latitude;
-                        lon = pos.coords.longitude;
-                        setUserPos([lat, lon]);
-                    } catch (e) { }
-                }
-                const wRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m`);
-                const wData = await wRes.json();
-                const aRes = await fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=pm2_5,us_aqi`);
-                const aData = await aRes.json();
-                if (wData.current && aData.current) {
-                    setLiveData({
-                        temp: Math.round(wData.current.temperature_2m), humidity: Math.round(wData.current.relative_humidity_2m),
-                        pm25: aData.current.pm2_5, aqi: aData.current.us_aqi, status: getStatus(aData.current.us_aqi)
-                    });
-                }
-            } catch (e) { }
-        };
-        fetchOverview();
-    }, []);
+useEffect(() => {
+
+    const fetchSensorData = async () => {
+
+        try {
+
+            const res = await fetch("http://10.118.195.129:3000/sensor");
+
+            const data = await res.json();
+
+            setLiveData({
+                temp: data.temperature ?? "--",
+                humidity: data.humidity ?? "--",
+                pm25: data.mq5 ?? "--",   // placeholder for PM2.5 estimation
+                aqi: data.aqi ?? "--",
+                status: getStatus(data.aqi ?? 0)
+            });
+
+        } catch (error) {
+
+            console.log("Sensor fetch failed");
+
+            setLiveData({
+                temp: "--",
+                humidity: "--",
+                pm25: "--",
+                aqi: "--",
+                status: "Sensor Offline"
+            });
+
+        }
+
+    };
+
+    fetchSensorData();
+
+    const interval = setInterval(fetchSensorData, 3000);
+
+    return () => clearInterval(interval);
+
+}, []);
 
     const handleMapClick = async (lat, lng) => {
         try {
