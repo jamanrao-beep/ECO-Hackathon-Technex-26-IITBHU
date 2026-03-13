@@ -98,7 +98,7 @@ useEffect(() => {
 
         try {
 
-            const res = await fetch("http://localhost:3000/sensor");
+            const res = await fetch("http://friendly-disco-69xvr4wjx6v5fjgw-3000.app.github.dev/sensor");
             
             const data = await res.json();
 
