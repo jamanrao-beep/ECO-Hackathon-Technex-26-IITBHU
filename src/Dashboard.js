@@ -217,7 +217,7 @@ const Dashboard = () => {
                                     <div className="aqi-circle"><span className="aqi-value">{liveData.aqi}</span><span className="aqi-label">AQI</span><span className="aqi-status">{liveData.status}</span></div>
                                     <div className="glass-box side-box right"><span className="box-icon">💧</span><span className="box-value">{liveData.humidity}%</span><span className="box-label">Humidity</span></div>
                                 </div>
-                                <div className="bottom-row"><div className="glass-box small-box"><span className="box-label">PM 2.5</span><span className="box-value">{liveData.pm25}</span></div><div className="glass-box small-box"><span className="box-label">PM 10</span><span className="box-value">--</span></div></div>
+                                <div className="bottom-row"><div className="glass-box small-box"><span className="box-label">PM 2.5</span><span className="box-value">{liveData.pm25}</span></div><div className="glass-box small-box"><span className="box-label">PM 10</span><span className="box-value">{liveData.pm10}</span></div></div>
 
                                 <div className="forecast-wrapper">
                                     <button
