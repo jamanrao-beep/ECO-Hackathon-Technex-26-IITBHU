@@ -22,7 +22,7 @@ const Dashboard = () => {
     // Auto-Play State for the Slider
     const [isPlaying, setIsPlaying] = useState(false);
 
-    const [userPos, setUserPos] = useState([25.5358, 84.8512]);
+    const [userPos, setUserPos] = useState([25.2677, 82.9913]);
 
     const [startLoc, setStartLoc] = useState('');
     const [endLoc, setEndLoc] = useState('');
@@ -32,7 +32,7 @@ const Dashboard = () => {
     const [liveData, setLiveData] = useState({ temp: '--', humidity: '--', pm25: '--', aqi: '--', pm10: '--', status: 'Loading...' });
 
     const [selectedLoc, setSelectedLoc] = useState({
-        name: "IIT Patna", aqi: 45, status: "Good", message: "Perfect conditions.",
+        name: "IIT BHU", aqi: 45, status: "Good", message: "Perfect conditions.",
         pm10: 32, pm25: 12, no2: 12, o3: 18, co: 0.4
     });
 
@@ -95,7 +95,7 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchOverview = async () => {
             try {
-                let lat = 25.5358, lon = 84.8512; // Default to IIT Patna
+                let lat = 25.2677, lon = 82.9913; // Default to IIT BHU
 
                 // Get Current User Location
                 if (navigator.geolocation) {

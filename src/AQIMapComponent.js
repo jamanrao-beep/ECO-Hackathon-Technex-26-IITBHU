@@ -48,8 +48,7 @@ function RecenterMap({ lat, lng }) {
 }
 
 const AQIMapComponent = ({ onLocationSelect }) => {
-    // Default Start: IIT Patna
-    const startPos = [25.5358, 84.8512];
+    const startPos = [25.2677, 82.9913];
 
     return (
         <div style={{ height: "100%", width: "100%", borderRadius: "16px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)" }}>
@@ -75,7 +74,7 @@ const AQIMapComponent = ({ onLocationSelect }) => {
                 <LocationMarker onLocationSelect={onLocationSelect} />
 
                 {/* Default Marker for start position */}
-                <Marker position={startPos}><Popup>IIT Patna (Start)</Popup></Marker>
+                <Marker position={startPos}><Popup>IIT BHU (Start)</Popup></Marker>
             </MapContainer>
         </div>
     );
