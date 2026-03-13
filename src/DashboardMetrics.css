@@ -1486,3 +1486,33 @@
         flex-direction: column !important;
     }
 }
+
+.ai-portal-btn {
+  background: rgba(30, 64, 175, 0.2); /* Deep bluish glass base */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.5); /* Blue border */
+  color: #f8fafc;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+}
+
+.ai-portal-btn:hover {
+  background: rgba(37, 99, 235, 0.4); /* Brighter blue on hover */
+  transform: translateY(-5px); /* Lift effect */
+  border-color: #60a5fa;
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.6); /* Cyan-blue glow */
+  letter-spacing: 0.5px;
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+}

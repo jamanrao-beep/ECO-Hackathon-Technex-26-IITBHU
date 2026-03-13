@@ -93,30 +93,45 @@ const Dashboard = () => {
 
 
     useEffect(() => {
-        const fetchOverview = async () => {
+
+        const fetchSensorData = async () => {
+
             try {
-                let lat = 25.5358, lon = 84.8512;
-                if (navigator.geolocation) {
-                    try {
-                        const pos = await new Promise((res, rej) => navigator.geolocation.getCurrentPosition(res, rej));
-                        lat = pos.coords.latitude;
-                        lon = pos.coords.longitude;
-                        setUserPos([lat, lon]);
-                    } catch (e) { }
-                }
-                const wRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m`);
-                const wData = await wRes.json();
-                const aRes = await fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=pm2_5,us_aqi`);
-                const aData = await aRes.json();
-                if (wData.current && aData.current) {
-                    setLiveData({
-                        temp: Math.round(wData.current.temperature_2m), humidity: Math.round(wData.current.relative_humidity_2m),
-                        pm25: aData.current.pm2_5, aqi: aData.current.us_aqi, status: getStatus(aData.current.us_aqi)
-                    });
-                }
-            } catch (e) { }
+
+                const res = await fetch("http://10.118.195.85:3000/sensor");
+
+                const data = await res.json();
+
+                setLiveData({
+                    temp: data.temperature ?? "--",
+                    humidity: data.humidity ?? "--",
+                    pm25: data.mq5 ?? "--",   // placeholder for PM2.5 estimation
+                    aqi: data.aqi ?? "--",
+                    status: getStatus(data.aqi ?? 0)
+                });
+
+            } catch (error) {
+
+                console.log("Sensor fetch failed");
+
+                setLiveData({
+                    temp: "--",
+                    humidity: "--",
+                    pm25: "--",
+                    aqi: "--",
+                    status: "Sensor Offline"
+                });
+
+            }
+
         };
-        fetchOverview();
+
+        fetchSensorData();
+
+        const interval = setInterval(fetchSensorData, 1000);
+
+        return () => clearInterval(interval);
+
     }, []);
 
     const handleMapClick = async (lat, lng) => {
@@ -202,19 +217,14 @@ const Dashboard = () => {
                                 <div className="bottom-row"><div className="glass-box small-box"><span className="box-label">PM 2.5</span><span className="box-value">{liveData.pm25}</span></div><div className="glass-box small-box"><span className="box-label">PM 10</span><span className="box-value">--</span></div></div>
 
                                 <div className="forecast-wrapper">
-                                    <div className="forecast-title"><span>📈</span> ML Predictive Forecast (Next 24 Hrs)</div>
-                                    <div className="forecast-grid">
-                                        {[...Array(24)].map((_, i) => {
-                                            const predictedAQI = liveData.aqi !== '--' ? Math.max(10, liveData.aqi + Math.round(Math.sin(i / 2) * 20)) : '--';
-                                            return (
-                                                <div key={i} className="forecast-card"><div className="fc-time">+{i + 1}h</div><div className="fc-aqi" style={{ color: predictedAQI > 100 ? '#e74c3c' : predictedAQI > 50 ? '#f1c40f' : '#2ecc71' }}>{predictedAQI}</div></div>
-                                            );
-                                        })}
-                                    </div>
-                                    <div className="ml-insights-container">
-                                        <div className="ml-card"><div className="ml-card-title"><span>📍</span> Spatial Interpolation Engine</div><div className="ml-card-desc">Estimating target "blind spot" air quality using Inverse Distance Weighting (IDW) from nearest active nodes.</div><div className="ml-data-row"><span>Node Alpha (Dist: 1.2 km)</span><span className="ml-data-value">{liveData.aqi !== '--' ? liveData.aqi + 14 : 142} AQI</span></div><div className="ml-data-row"><span>Node Beta (Dist: 2.8 km)</span><span className="ml-data-value">{liveData.aqi !== '--' ? liveData.aqi - 8 : 122} AQI</span></div><div className="ml-data-row"><span>Node Gamma (Dist: 4.5 km)</span><span className="ml-data-value">{liveData.aqi !== '--' ? liveData.aqi + 27 : 155} AQI</span></div><div className="ml-result-box">Computed Target AQI: {liveData.aqi !== '--' ? liveData.aqi : 130}</div></div>
-                                        <div className="ml-card"><div className="ml-card-title"><span>🔮</span> PM2.5 Forecast Model</div><div className="ml-card-desc">Predicting upcoming pollution spikes by analyzing current readings, traffic density, and meteorological lag.</div><div className="ml-data-row"><span>Base PM2.5</span><span className="ml-data-value">{liveData.pm25 !== '--' ? liveData.pm25 : 45} µg/m³</span></div><div className="ml-data-row"><span>Live Traffic Density</span><span className="ml-data-value" style={{ color: '#f1c40f' }}>85% (Heavy)</span></div><div className="ml-data-row"><span>Wind Velocity</span><span className="ml-data-value">4.2 km/h (Stagnant)</span></div><div className="ml-result-box alert">⚠️ +2 Hour Spike Alert: {liveData.pm25 !== '--' ? Math.round(liveData.pm25 * 1.4) : 63} µg/m³</div></div>
-                                    </div>
+                                    <div className="forecast-title"><span></span> ML Predictive Forecast (Next 24 Hrs)</div>
+                                    <button
+                                        className="ai-portal-btn"
+                                        onClick={() => window.open('https://friendly-disco-69xvr4wjx6v5fjgw-8501.app.github.dev/', '_blank')}
+                                    >
+                                        <span className="btn-icon">🧠</span>
+                                        Launch Pro Atmos AI
+                                    </button>
                                 </div>
 
                                 <div className="suggestion-container" style={{ display: 'flex', gap: '20px', width: '90%', maxWidth: '1100px' }}>
