@@ -217,7 +217,6 @@ const Dashboard = () => {
                                 <div className="bottom-row"><div className="glass-box small-box"><span className="box-label">PM 2.5</span><span className="box-value">{liveData.pm25}</span></div><div className="glass-box small-box"><span className="box-label">PM 10</span><span className="box-value">--</span></div></div>
 
                                 <div className="forecast-wrapper">
-                                    <div className="forecast-title"><span></span> ML Predictive Forecast (Next 24 Hrs)</div>
                                     <button
                                         className="ai-portal-btn"
                                         onClick={() => window.open('https://friendly-disco-69xvr4wjx6v5fjgw-8501.app.github.dev/', '_blank')}
