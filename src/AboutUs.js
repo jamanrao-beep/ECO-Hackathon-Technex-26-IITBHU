@@ -28,9 +28,9 @@ const AboutUs = ({ backgroundImage }) => {
                     </p>
 
                     <div className="stats-row">
-                        <div className="stat-badge"><span>🎓</span> Undergraduate Project</div>
-                        <div className="stat-badge"><span>📍</span> IIT Patna</div>
-                        <div className="stat-badge" style={{ borderColor: '#2ecc71', color: '#2ecc71' }}><span>✅</span> Prototype Live</div>
+                        <div className="stat-badge"> Undergraduate Project</div>
+                        <div className="stat-badge">IIT Patna</div>
+                        <div className="stat-badge" style={{ borderColor: '#2ecc71', color: '#2ecc71' }}> Prototype Live</div>
                     </div>
                 </motion.div>
             </div>

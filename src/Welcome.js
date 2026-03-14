@@ -55,7 +55,7 @@ const Welcome = ({ onStart }) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.8 }}
                 >
-                    TECHNEX '26
+                    Unstoppables '26
                 </motion.h1>
 
                 <motion.div
@@ -76,7 +76,7 @@ const Welcome = ({ onStart }) => {
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.5 }}
                         >
-                            > {phrases[phraseIndex]}
+                            {phrases[phraseIndex]}
                         </motion.span>
                     </AnimatePresence>
                 </div>
@@ -98,9 +98,9 @@ const Welcome = ({ onStart }) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 2, duration: 1 }}
                 >
-                    <div className="feature-pill" onClick={onStart}><span>🔮</span> ML Forecasting</div>
-                    <div className="feature-pill" onClick={onStart}><span>🗺️</span> Safe Route AI</div>
-                    <div className="feature-pill" onClick={onStart}><span>🏢</span> Thermal Diagnostics</div>
+                    <div className="feature-pill" onClick={onStart}> ML Forecasting</div>
+                    <div className="feature-pill" onClick={onStart}> Safe Route AI</div>
+                    <div className="feature-pill" onClick={onStart}> Thermal Diagnostics</div>
                 </motion.div>
 
             </motion.div>
