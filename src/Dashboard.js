@@ -222,7 +222,7 @@ const Dashboard = () => {
                                 <div className="forecast-wrapper">
                                     <button
                                         className="ai-portal-btn"
-                                        onClick={() => window.open('https://friendly-disco-69xvr4wjx6v5fjgw-8501.app.github.dev/', '_blank')}
+                                        onClick={() => window.open('https://friendly-disco-69xvr4wjx6v5fjgw-8502.app.github.dev/', '_blank')}
                                     >
                                         Launch Pro Atmos AI
                                     </button>
@@ -231,7 +231,7 @@ const Dashboard = () => {
                                 <div className="forecast-wrapper">
                                     <button
                                         className="ai-portal-btns"
-                                        onClick={() => window.open('https://sturdy-space-potato-v6jpgqwxj49gfpj57-8501.app.github.dev/', '_blank')}
+                                        onClick={() => window.open('https://friendly-disco-69xvr4wjx6v5fjgw-8501.app.github.dev/', '_blank')}
                                     >
                                         Click here to find out aqi blindspots
                                     </button>
