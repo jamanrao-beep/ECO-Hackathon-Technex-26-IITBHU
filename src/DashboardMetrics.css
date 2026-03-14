@@ -1505,6 +1505,24 @@
   margin: 20px auto 0 auto;
 }
 
+.ai-portal-btns {
+  background: rgba(30, 64, 175, 0.2); /* Deep bluish glass base */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.5); /* Blue border */
+  color: #f8fafc;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  margin: 20px auto 0 auto;
+}
+
 .ai-portal-btn:hover {
   background: rgba(37, 99, 235, 0.4); /* Brighter blue on hover */
   transform: translateY(-5px); /* Lift effect */

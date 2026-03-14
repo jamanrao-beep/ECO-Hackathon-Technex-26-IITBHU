@@ -228,6 +228,15 @@ const Dashboard = () => {
                                     </button>
                                 </div>
 
+                                <div className="forecast-wrapper">
+                                    <button
+                                        className="ai-portal-btns"
+                                        onClick={() => window.open('https://sturdy-space-potato-v6jpgqwxj49gfpj57-8501.app.github.dev/', '_blank')}
+                                    >
+                                        Find out aqi blindspots
+                                    </button>
+                                </div>
+
                                 <div className="suggestion-container" style={{ display: 'flex', gap: '20px', width: '90%', maxWidth: '1100px' }}>
                                     <div className="tourist-box" style={{ flex: 1 }}><div className="tourist-title"><span>🧭</span> Regional Conditions</div><p className="tourist-text">"Based on current AQI of {liveData.aqi}, conditions are {liveData.status}."</p><div className="icon-row"><span className="icon-tag">⛴️ Outdoor: {liveData.aqi < 100 ? "Optimal" : "Caution"}</span><span className="icon-tag">📸 Visibility: {liveData.humidity < 60 ? "Clear" : "Hazy"}</span></div></div>
 
