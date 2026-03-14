@@ -49,7 +49,7 @@ const AboutUs = ({ backgroundImage }) => {
                     <div className="team-cards-container">
 
                         {/* 1. Aman (ULTIMATE VIP CARD) */}
-                        <div className="profile-card leader-card">
+                        <div className="profile-card ">
                             <div className="profile-info">
                                 <div className="profile-name">
                                     Joginapally Aman Rao
@@ -155,31 +155,9 @@ const AboutUs = ({ backgroundImage }) => {
                     </p>
 
                     <div className="showcase-badge">
-                        <span>🏆</span> Eco Hackathon Finalist Team
+                        Eco Hackathon Finalist Team
                     </div>
 
-                    <div className="showcase-tech-row">
-                        <div className="tech-item">
-                            <div className="tech-icon">📡</div>
-                            <span>IoT Network</span>
-                        </div>
-                        <div className="tech-item">
-                            <div className="tech-icon">☁️</div>
-                            <span>Cloud Infrastructure</span>
-                        </div>
-                        <div className="tech-item">
-                            <div className="tech-icon">📈</div>
-                            <span>ML Analytics</span>
-                        </div>
-                        <div className="tech-item">
-                            <div className="tech-icon">🗺️</div>
-                            <span>GIS Spatial Graph</span>
-                        </div>
-                        <div className="tech-item">
-                            <div className="tech-icon">⚙️</div>
-                            <span>Hardware Integration</span>
-                        </div>
-                    </div>
                 </div>
 
             </div> {/* End of about-content-section */}

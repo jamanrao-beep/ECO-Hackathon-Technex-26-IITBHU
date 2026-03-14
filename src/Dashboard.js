@@ -238,7 +238,7 @@ const Dashboard = () => {
                                 </div>
 
                                 <div className="suggestion-container" style={{ display: 'flex', gap: '20px', width: '90%', maxWidth: '1100px' }}>
-                                    <div className="tourist-box" style={{ flex: 1 }}><div className="tourist-title"><span>🧭</span> Regional Conditions</div><p className="tourist-text">"Based on current AQI of {liveData.aqi}, conditions are {liveData.status}."</p><div className="icon-row"><span className="icon-tag">⛴️ Outdoor: {liveData.aqi < 100 ? "Optimal" : "Caution"}</span><span className="icon-tag">📸 Visibility: {liveData.humidity < 60 ? "Clear" : "Hazy"}</span></div></div>
+                                    <div className="tourist-box" style={{ flex: 1 }}><div className="tourist-title">Regional Conditions</div><p className="tourist-text">"Based on current AQI of {liveData.aqi}, conditions are {liveData.status}."</p><div className="icon-row"><span className="icon-tag"> Outdoor: {liveData.aqi < 100 ? "Optimal" : "Caution"}</span><span className="icon-tag">Visibility: {liveData.humidity < 60 ? "Clear" : "Hazy"}</span></div></div>
 
                                     {/* USER PERSONA INTEGRATION */}
                                     <div className="health-box" style={{ flex: 1, borderLeft: '4px solid #00d2ff' }}>
@@ -254,7 +254,7 @@ const Dashboard = () => {
                             <div className="plan-header"><h2 className="plan-title">Pro Atmos Guard</h2><p className="plan-tagline">"Turning invisible threats into visible insights"</p></div>
                             <div className="plan-grid"><div className="plan-card"><h3>🌐 Hyperlocal Intelligence</h3><p>Moving beyond aggregated city-level averages, our system utilizes a <strong>hyperlocal predictive AQI grid</strong> to provide street-level precision.</p></div><div className="plan-card"><h3>🔮 12-24 Hour Forecasting</h3><p>Instead of just displaying present-time AQI, we implemented an <strong>ML-based time-series forecasting engine</strong> to predict pollution spikes before they happen.</p></div><div className="plan-card"><h3>🗺️ Spatial Interpolation</h3><p>To cover large unmapped spatial blind zones, the engine applies <strong>Inverse Distance Weighting (IDW)</strong> to estimate air quality accurately between fixed stations.</p></div><div className="plan-card"><h3>🚀 Scalability Roadmap</h3><p><strong>Phase 1:</strong> Pilot Deployment<br /><strong>Phase 2:</strong> Multi-City Expansion<br /><strong>Phase 3:</strong> National Environmental Intelligence Network</p></div></div>
                             <div className="plan-header" style={{ marginTop: '60px', marginBottom: '40px' }}><h2 className="plan-title" style={{ fontSize: '2.2rem' }}>System Architecture</h2><p className="plan-tagline">How we process and predict environmental data</p></div>
-                            <div className="plan-grid"><div className="plan-card"><h3>📡 1. Hardware & Data Acquisition</h3><p>Our foundation relies on real-time data collection. We utilize custom <strong>IoT nodes powered by ESP32 microcontrollers and PMS5003 sensors</strong>.</p></div><div className="plan-card"><h3>🧠 2. ML Prediction Engine</h3><p>Data undergoes rigorous ETL cleaning and feature engineering. We then deploy <strong>Random Forest and XGBoost models</strong> to forecast future PM2.5 levels.</p></div><div className="plan-card"><h3>⚠️ 3. Risk Assessment & Alerting</h3><p>Our Risk Engine acts as a proactive shield, calculating health risks and triggering <strong>automated alerts before a user enters a hazardous zone</strong>.</p></div><div className="plan-card"><h3>💻 4. Interactive Visualization</h3><p>The entire intelligence pipeline is served via a lightweight <strong>FastAPI backend</strong>. On the frontend, we utilize <strong>React.js and Leaflet.js</strong>.</p></div></div>
+                            <div className="plan-grid"><div className="plan-card"><h3> 1. Hardware & Data Acquisition</h3><p>Our foundation relies on real-time data collection. We utilize custom <strong>IoT nodes powered by ESP32 microcontrollers and PMS5003 sensors</strong>.</p></div><div className="plan-card"><h3>🧠 2. ML Prediction Engine</h3><p>Data undergoes rigorous ETL cleaning and feature engineering. We then deploy <strong>Random Forest and XGBoost models</strong> to forecast future PM2.5 levels.</p></div><div className="plan-card"><h3>⚠️ 3. Risk Assessment & Alerting</h3><p>Our Risk Engine acts as a proactive shield, calculating health risks and triggering <strong>automated alerts before a user enters a hazardous zone</strong>.</p></div><div className="plan-card"><h3>💻 4. Interactive Visualization</h3><p>The entire intelligence pipeline is served via a lightweight <strong>FastAPI backend</strong>. On the frontend, we utilize <strong>React.js and Leaflet.js</strong>.</p></div></div>
                         </section>
                     </div>
                 )}
@@ -267,9 +267,9 @@ const Dashboard = () => {
                                 <div className="regional-card" style={{ marginBottom: "10px" }}>
                                     <div className="regional-header-row"><div className="regional-title"><span>📍</span> Regional Live Insights</div><div className="regional-subtitle">Live Data for Selected Pin</div></div>
                                     <div className="regional-metrics-row">
-                                        <div className="metric-block"><span className="metric-icon-lg">🌫️</span><span className="metric-value-lg">{selectedLoc.pm25}</span><span className="metric-label-sm">PM2.5</span></div><div className="metric-divider"></div>
-                                        <div className="metric-block"><span className="metric-icon-lg">📉</span><span className="metric-value-lg">{dynamicAQI}</span><span className="metric-label-sm">Current AQI</span></div><div className="metric-divider"></div>
-                                        <div className="metric-block"><span className="metric-icon-lg">🛡️</span><span className="metric-value-lg">{dynamicStatus}</span><span className="metric-label-sm">Status</span></div>
+                                        <div className="metric-block"><span className="metric-value-lg">{selectedLoc.pm25}</span><span className="metric-label-sm">PM2.5</span></div><div className="metric-divider"></div>
+                                        <div className="metric-block"><span className="metric-value-lg">{dynamicAQI}</span><span className="metric-label-sm">Current AQI</span></div><div className="metric-divider"></div>
+                                        <div className="metric-block"><span className="metric-value-lg">{dynamicStatus}</span><span className="metric-label-sm">Status</span></div>
                                     </div>
                                 </div>
 
@@ -324,7 +324,7 @@ const Dashboard = () => {
                         {/* Route Optimizer Map */}
                         <div style={{ background: "linear-gradient(135deg, #0f0c29, #302b63, #24243e)", width: "100%", paddingBottom: "80px", display: "flex", justifyContent: "center" }}>
                             <div className="predictive-container" style={{ marginTop: 0 }}>
-                                <div className="predictive-header"><div className="predictive-title">🗺️ AI Safe Route Optimizer</div><div className="predictive-subtitle">Enter start and end points to calculate a commute avoiding hazardous pollution zones.</div></div>
+                                <div className="predictive-header"><div className="predictive-title">AI Safe Route Optimizer</div><div className="predictive-subtitle">Enter start and end points to calculate a commute avoiding hazardous pollution zones.</div></div>
                                 <div className="routing-inputs-bar">
                                     <input type="text" placeholder="Starting Point (e.g. Patna)" className="route-input" value={startLoc} onChange={(e) => setStartLoc(e.target.value)} />
                                     <span style={{ fontSize: '1.5rem' }}>➔</span>
@@ -350,11 +350,11 @@ const Dashboard = () => {
                             <div className="aqi-map-container" style={{ paddingTop: "120px", minHeight: "auto" }}>
 
                                 <div className="regional-card" style={{ marginBottom: "10px", borderColor: 'rgba(255, 71, 87, 0.3)' }}>
-                                    <div className="regional-header-row"><div className="regional-title" style={{ color: '#ff4757' }}><span>🔥</span> Regional Heat Insights</div><div className="regional-subtitle">Urban Thermal Diagnostics</div></div>
+                                    <div className="regional-header-row"><div className="regional-title" style={{ color: '#ff4757' }}> Regional Heat Insights</div><div className="regional-subtitle">Urban Thermal Diagnostics</div></div>
                                     <div className="regional-metrics-row">
-                                        <div className="metric-block"><span className="metric-icon-lg">🌡️</span><span className="metric-value-lg">{heatLoc.temp}°C</span><span className="metric-label-sm">Ambient Temp</span></div><div className="metric-divider"></div>
-                                        <div className="metric-block"><span className="metric-icon-lg">🏢</span><span className="metric-value-lg" style={{ color: '#ff4757' }}>{heatLoc.surfaceTemp}°C</span><span className="metric-label-sm">Surface Temp</span></div><div className="metric-divider"></div>
-                                        <div className="metric-block"><span className="metric-icon-lg">💧</span><span className="metric-value-lg">{heatLoc.humidity}%</span><span className="metric-label-sm">Humidity</span></div>
+                                        <div className="metric-block"><span className="metric-value-lg">{heatLoc.temp}°C</span><span className="metric-label-sm">Ambient Temp</span></div><div className="metric-divider"></div>
+                                        <div className="metric-block"><span className="metric-value-lg" style={{ color: '#ff4757' }}>{heatLoc.surfaceTemp}°C</span><span className="metric-label-sm">Surface Temp</span></div><div className="metric-divider"></div>
+                                        <div className="metric-block"><span className="metric-value-lg">{heatLoc.humidity}%</span><span className="metric-label-sm">Humidity</span></div>
                                     </div>
                                 </div>
 
@@ -375,7 +375,7 @@ const Dashboard = () => {
                         <div style={{ background: "linear-gradient(135deg, #0f0c29, #302b63, #24243e)", width: "100%", padding: "40px 0 80px 0", display: "flex", justifyContent: "center", boxShadow: "0 -20px 40px rgba(0,0,0,0.5)" }}>
                             <div className="predictive-container" style={{ marginTop: 0 }}>
                                 <div className="predictive-header">
-                                    <div className="predictive-title" style={{ color: '#ff4757' }}>🏢 The Thirsty Cloud: Heat Distribution Grid</div>
+                                    <div className="predictive-title" style={{ color: '#ff4757' }}>The Thirsty Cloud: Heat Distribution Grid</div>
                                     <div className="predictive-subtitle">Identifying extreme thermal anomalies caused by heavy industry and Hyperscale AI Server Farms, including their estimated cooling water consumption.</div>
                                 </div>
                                 <div className="predictive-map-wrapper" style={{ height: "500px" }}>
@@ -443,17 +443,17 @@ const Dashboard = () => {
                             <div className="plan-grid" style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
                                 <div className="plan-card" style={{ background: 'rgba(255,255,255,0.02)', borderColor: 'rgba(231, 76, 60, 0.3)' }}>
-                                    <div className="eco-card-header" style={{ fontSize: '1.2rem', color: '#e74c3c', marginBottom: '15px' }}><span>⚠️</span> The Data Blindspot</div>
+                                    <div className="eco-card-header" style={{ fontSize: '1.2rem', color: '#e74c3c', marginBottom: '15px' }}> The Data Blindspot</div>
                                     <p className="eco-card-text" style={{ color: '#cbd5e1', lineHeight: '1.6', fontSize: '0.9rem' }}>Air pollution is currently reported as massive, city-wide averages. This masks the toxic reality of specific industrial zones. A monitoring station in a green park cannot warn a commuter about hazardous smog just 2km away at a heavy traffic junction.</p>
                                 </div>
 
                                 <div className="plan-card" style={{ background: 'rgba(255,255,255,0.02)', borderColor: 'rgba(0, 210, 255, 0.3)' }}>
-                                    <div className="eco-card-header" style={{ fontSize: '1.2rem', color: '#00d2ff', marginBottom: '15px' }}><span>🫁</span> The PM2.5 Threat</div>
+                                    <div className="eco-card-header" style={{ fontSize: '1.2rem', color: '#00d2ff', marginBottom: '15px' }}>The PM2.5 Threat</div>
                                     <p className="eco-card-text" style={{ color: '#cbd5e1', lineHeight: '1.6', fontSize: '0.9rem' }}>Microscopic particulate matter (PM2.5) bypasses the body's natural defenses, entering the bloodstream. Commuters facing hyperlocal spikes at traffic intersections inhale toxic doses that aggregate city-wide averages completely fail to report.</p>
                                 </div>
 
                                 <div className="plan-card" style={{ background: 'rgba(255,255,255,0.02)', borderColor: 'rgba(46, 204, 113, 0.3)' }}>
-                                    <div className="eco-card-header" style={{ fontSize: '1.2rem', color: '#2ecc71', marginBottom: '15px' }}><span>🎯</span> Our Mission & Solution</div>
+                                    <div className="eco-card-header" style={{ fontSize: '1.2rem', color: '#2ecc71', marginBottom: '15px' }}> Our Mission & Solution</div>
                                     <ul className="eco-list" style={{ color: '#cbd5e1', lineHeight: '1.6', paddingLeft: '20px', fontSize: '0.9rem' }}>
                                         <li style={{ marginBottom: '5px' }}><strong>Interpolate:</strong> Estimate air quality in spatial "blind spots".</li>
                                         <li style={{ marginBottom: '5px' }}><strong>Forecast:</strong> Predict PM2.5 trends for the next 12–24 hours.</li>
@@ -462,7 +462,7 @@ const Dashboard = () => {
                                 </div>
 
                                 <div className="plan-card" style={{ background: 'rgba(255,255,255,0.02)', borderColor: 'rgba(241, 196, 15, 0.3)' }}>
-                                    <div className="eco-card-header" style={{ fontSize: '1.2rem', color: '#f1c40f', marginBottom: '15px' }}><span>⚙️</span> Technical Implementation</div>
+                                    <div className="eco-card-header" style={{ fontSize: '1.2rem', color: '#f1c40f', marginBottom: '15px' }}> Technical Implementation</div>
                                     <ul className="eco-list" style={{ color: '#cbd5e1', lineHeight: '1.6', paddingLeft: '20px', fontSize: '0.9rem' }}>
                                         <li style={{ marginBottom: '5px' }}><strong>Hardware:</strong> ESP32 Microcontrollers & PMS5003 Sensors.</li>
                                         <li style={{ marginBottom: '5px' }}><strong>ML Engine:</strong> Random Forest / XGBoost models (FastAPI).</li>
@@ -477,17 +477,17 @@ const Dashboard = () => {
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
 
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '10px' }}>
-                                        <span style={{ color: '#e74c3c', fontSize: '1.1rem' }}>🚗 1 Hour Commute in Heavy Traffic</span>
+                                        <span style={{ color: '#e74c3c', fontSize: '1.1rem' }}>1 Hour Commute in Heavy Traffic</span>
                                         <span style={{ color: '#cbd5e1' }}>≈ Inhaling the PM2.5 equivalent of 2-3 cigarettes</span>
                                     </div>
 
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '10px' }}>
-                                        <span style={{ color: '#f1c40f', fontSize: '1.1rem' }}>📉 Chronic PM2.5 Exposure</span>
+                                        <span style={{ color: '#f1c40f', fontSize: '1.1rem' }}>Chronic PM2.5 Exposure</span>
                                         <span style={{ color: '#cbd5e1' }}>≈ 15% increased risk of respiratory and cardiovascular disease</span>
                                     </div>
 
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                        <span style={{ color: '#2ecc71', fontSize: '1.1rem' }}>🛡️ AI Safe Route Optimizer</span>
+                                        <span style={{ color: '#2ecc71', fontSize: '1.1rem' }}>AI Safe Route Optimizer</span>
                                         <span style={{ color: '#cbd5e1' }}>≈ Achieves up to 22% reduction in daily toxic particulate inhalation</span>
                                     </div>
 
