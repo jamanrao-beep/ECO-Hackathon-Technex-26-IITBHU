@@ -1531,6 +1531,14 @@
   letter-spacing: 0.5px;
 }
 
+.ai-portal-btns:hover {
+  background: rgba(37, 99, 235, 0.4); /* Brighter blue on hover */
+  transform: translateY(-5px); /* Lift effect */
+  border-color: #60a5fa;
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.6); /* Cyan-blue glow */
+  letter-spacing: 0.5px;
+}
+
 .btn-icon {
   font-size: 4rem;
 }

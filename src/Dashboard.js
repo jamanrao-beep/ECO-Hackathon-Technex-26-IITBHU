@@ -233,7 +233,7 @@ const Dashboard = () => {
                                         className="ai-portal-btns"
                                         onClick={() => window.open('https://sturdy-space-potato-v6jpgqwxj49gfpj57-8501.app.github.dev/', '_blank')}
                                     >
-                                        Find out aqi blindspots
+                                        Click here to find out aqi blindspots
                                     </button>
                                 </div>
 
